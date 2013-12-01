@@ -8,6 +8,11 @@ body{
     line-height: 50px;
 }
 
+.navbar-inverse{
+    background-color: #3F2917;
+    border-color: #3F2917;
+}
+
 .navbar-brand{
     line-height: 50px;
 }
