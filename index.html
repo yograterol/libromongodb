@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Libro sobre NoSQL y MongoDB en Espa&ntilde;ol</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <a class="navbar-brand" href="#img_header">MongoDB en Espa&ntilde;ol</a>
+                <ul class="nav navbar-nav">
+                    <li><a href="#description">Descripci&oacute;n</a></li>
+                    <li><a href="#licensing">Licencia</a></li>
+                    <li><a href="#donating">Dona</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="twitter"><a href="http://www.twitter.com/yograterol" target="_blank"><img src="img/twitter.png"></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="img_header">
+            <div class="container">
+                <p align="center"><img src="img/mongo-db-alternate-logo.png" /></p>
+            </div>
+        </section>
+
+        <section class="background">
+            <div class="container">
+                <section id="description">
+                    <div class="page-header">
+                        <h1>MongoDB en Espa&ntilde;ol <small>Porque MongoDB es para todos.</small></h1>
+                    </div>
+
+                    <p>
+                        Es una pena que muchos libros e informaci&oacute;n sobre tecnolog&iacute;as novedosas
+                        no sean traducido al idioma espa&ntilde;ol (<strong>uno de los primeros 5 idiomas
+                        m&aacute;s usado en el mundo</strong>); este problema origina que muchos estudiantes,
+                        entusiastas y profesionales con poco conocimiento de otros idiomas se vean limitado a
+                        usar traductores o entender lo que puedan de los libro en otros idiomas.
+                    </p>
+                    <p>
+                        Por eso me veo inspirado para ayudar a crear documentaci&oacute;n en espa&ntilde;ol,
+                        en este caso sobre base de datos NoSQL (No relacionales) especificamente sobre el motor
+                        de base de datos MongoDB. Este libro contendr&aacute; toda la informaci&oacute;n sobre
+                        uso, administraci&oacute;n y programaci&oacute;n con MongoDB, los ejemplos de programaci&oacute;n
+                        estar&aacute;n enfocados a Python y NodeJS.
+                    </p>
+                    <p>
+                        El nivel ser&aacute; de b&aacute;sico a intermedio, en una primera edici&oacute;n,
+                        posteriormente saldr&aacute;n otras ediciones sobre programaci&oacute;n avanzada con MongoDB
+                        y administraci&oacute;n avanzada de MongoDB.
+                    </p>
+                </section>
+
+                <section id="licensing">
+                    <div class="page-header">
+                        <h1>Licencia <small>It's free (Es libre).</small></h1>
+                    </div>
+                    <p>
+                        Licencia: Reconocimiento-NoComercial-CompartirIgual 2.1
+                    </p>
+                    <p>
+                        Resumen de la licencia Creative Commons Reconocimiento - NoComercial -
+                        CompartirIgual 2.1: Usted es libre de copiar, distribuir y comunicar
+                        públicamente la obra y hacer obras derivadas bajo las condiciones siguientes:
+                    </p>
+                    <p>
+                        <ol>
+                            <li>Debe reconocer y citar al autor original.</li>
+                            <li>No puede utilizar esta obra para fines comerciales.</li>
+                            <li>Si altera o transforma alguna de estas obras o genera
+                                una obra derivada, sólo puede distribuir la obra generada
+                                bajo una licencia idéntica a ésta.</li>
+                        </ol>
+                    </p>
+                    <p>
+                        Al reutilizar o distribuir las obras, tiene que dejar bien claro
+                        los términos de la licencia de esta obra. Alguna de estas condiciones
+                        puede no aplicarse si se obtiene el permiso del titular de los derechos
+                        de autor. Los derechos derivados de usos legítimos u otras limitaciones
+                        no se ven afectados por lo anterior.
+                    </p>
+                    <p>
+                        La información contenida en este documento y los derivados de éste se
+                        proporcionan tal cual son y los autores no asumirán responsabilidad
+                        alguna si el usuario o lector hace mal uso de éstos.
+                    </p>
+                </section>
+                <section id="donating">
+                    <div class="page-header">
+                        <h1>Dona <small>y ayuda.</small></h1>
+                    </div>
+                    <p>
+                        Puedes ayudar al desarrollo de este libro haciendo una donaci&oacute;n:
+                        <a href="https://ch.eckout.com/libromongodb" target="_blank">Dona ahora :)</a>
+                    </p>
+                    <p>
+                        Tambi&eacute;n puedes ayudar revisando el libro y corrigiendo errores en el
+                        repositorio:
+
+                        <a href="https://github.com/yograterol/libromongodb" target="_blank">
+                            Repositorio en GitHub
+                        </a>
+                    </p>
+                </section>
+            </div>
+        </section>
+        <!-- jQuery -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('a[href^="#"]').on('click',function (e) {
+                    e.preventDefault();
+
+                    var target = this.hash,
+                    $target = $(target);
+
+                    $('html, body').stop().animate({
+                        'scrollTop': $target.offset().top
+                    }, 900, 'swing', function () {
+                        window.location.hash = target;
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
