@@ -1,0 +1,52 @@
+\part{El desconocido NoSQL} 
+\chapter{Introducci\'on a NoSQL}
+
+\section{Definici\'on}
+
+NoSQL o "No solamente SQL" ({\bf Not Only SQL}), es una clase de base de datos que se diferencian en gran parte de las base de datos convencionales, en caracter\'isticas tanto de uso como de implementaci\'on; este tipo de base de datos no usa SQL o al menos no como lenguaje predeterminado para realizar las consultas. Las base de datos NoSQL (desde ahora "no relacionales"), no soportan totalmente {\bf ACID} \footnote{'ACID: Atomicidad, Coherencia, Aislamiento y Durabilidad'}, en primera instancia es una desventaja, pero gracias a esto permite que los motores de base de datos no relacional escalen f\'acilmente de manera horizontal. Cabe destacar que la informaci\'on no se almacena con una estructura fija, aun que si existe una estructura que el DBA\footnote{'Database Administrator - Administrador de base de datos'} o el desarrollador propone con anterioridad.
+
+El lenguaje SQL no es un lenguaje predominante entre los distintos tipos de base de datos no relacionales, por lo general cada motor tiene su propio lenguaje de consultas.
+
+\section{Modelos de base de datos}
+
+En el mundo de las base de datos relacionales nos encontramos con distintos modelos o tipos, que se desenpe\~nan mejor en algunos ambientes espec\'ificos; esas distintas facetas no se ven en las base de datos relacionales, por lo cual se listar\'a los modelos de base de datos no relacionales existentes.
+
+\subsection{Base de datos orientadas a documentos}
+
+Las base de datos orientadas a documentos o tambi\'en denominadas como {\bf Base de datos documental}, trabajan bajo el marco de la definic\'on de un "Documento", donde cada motor de base de datos que usa esta definici\'on difiere en los detalles, pero la mayor\'ia concuerda en como se almacena la informaci\'on con alg\'un formato est\'andar. Los formatos m\'as utilizados por los motores m\'as populares son: {\bf XML, YAML, JSON y BSON}. Se podr\'ia considerar la m\'as utilizada en la actualidad.
+
+Cada documento, es muy similar a un registro en una base de datos relacional, donde se puede observar una estructura parecida mas no r\'igida. Dos documentos no tienen porque tener una estructura igual, aunque sean de una misma colecci\'on de datos.
+
+Ejemplo de un documento:
+
+\begin{lstlisting}
+{
+	_id: 1,
+	nombre: "MongoDB",
+	url: "http://www.mongodb.org",
+	tipo: "Documental"
+}
+\end{lstlisting}
+
+Este ejemplo demuestra la sencillez de un documento, se observa un modelo al estilo \textit{\textbf{clave : valor}}. Una analog\'ia con las base de datos relacionales ser\'ia: Clave = Campo y Valor = Dato del campo, hasta all\'i queda la analog\'ia.
+
+\subsection{Base de datos orientadas a clave/valor}
+
+Este tipo de base de datos es muy similar a las base de datos documentales en el concepto de guardar la informaci\'on con el modelo clave:valor, la diferencia radica en que un documento se almacena en una clave; esta definici\'on puede parecer algo abstracta. Esto se explica mejor con un ejemplo.
+
+El siguiente ejemplo utiliza el documento de la secci\'on anterior:
+
+\begin{lstlisting}
+mongodb => {
+	_id: 1,
+	nombre: "MongoDB",
+	url: "http://www.mongodb.org",
+	tipo: "Documental"
+}
+\end{lstlisting}
+
+La clave en este caso es 'mongodb' y su contenido es el mismo documento de la secci\'on anterior. Esto hace que var\'ie la forma de recuperar la informaci\'on con respecto a las base de datos basadas en documentos.
+
+\section{Motores de base de datos}
+
+\section{Usos extendidos}

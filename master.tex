@@ -1,0 +1,68 @@
+\documentclass[a4paper, pdftex, 14pt, oneside, titlepage, openany, onecolumn]{book}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{makeidx} 
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{setspace}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document} 
+\pagestyle{fancy}
+\renewcommand\headrulewidth{0pt}
+\onehalfspace
+\lhead{}
+
+\author{Yohan Graterol B.}
+\title{NoSQL y MongoDB en Español}
+\date{Dic 2013}
+
+\begin{titlepage}
+	\begin{center}
+		\includegraphics[scale=0.10]{mongodb}
+		\HRule \\[0.4cm]
+		{ \huge \bfseries NoSQL y MongoDB en Español \\[0.4cm] }
+
+		\HRule \\[1.5cm]
+		
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Autor:}\\
+				Yohan {Graterol B.}
+			\end{flushleft}
+		\end{minipage}
+	    \begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+		%		\emph{Editor:} \\
+		%		 
+			\end{flushright}
+		\end{minipage}
+
+		\vfill
+
+		{\large \today}
+	\end{center}
+\end{titlepage}
+
+\newpage
+\mbox{}
+\thispagestyle{empty} 
+
+\include{agradecimientos} 
+\include{prefacio} 
+
+\tableofcontents
+
+\include{capitulo1}
+\include{capitulo2}
+\include{capitulo3}
+\include{capitulo4}
+\include{capitulo5}
+
+\backmatter
+\include{glosario} 
+
+\printindex
+\end{document}
