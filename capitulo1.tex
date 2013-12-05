@@ -3,13 +3,13 @@
 
 \section{Definici\'on}
 
-NoSQL o "No solamente SQL" ({\bf Not Only SQL}), es una clase de base de datos que se diferencian en gran parte de las base de datos convencionales, en caracter\'isticas tanto de uso como de implementaci\'on; este tipo de base de datos no usa SQL o al menos no como lenguaje predeterminado para realizar las consultas. Las base de datos NoSQL (desde ahora "no relacionales"), no soportan totalmente {\bf ACID} \footnote{'ACID: Atomicidad, Coherencia, Aislamiento y Durabilidad'}, en primera instancia es una desventaja, pero gracias a esto permite que los motores de base de datos no relacional escalen f\'acilmente de manera horizontal. Cabe destacar que la informaci\'on no se almacena con una estructura fija, aun que si existe una estructura que el DBA\footnote{'Database Administrator - Administrador de base de datos'} o el desarrollador propone con anterioridad.
+NoSQL o "No solamente SQL" ({\bf Not Only SQL}) es un t\'ermino acu\~nado por Carlo Strozzi en 1998 y nuevamente retomado por Eric Evans en 2009 y se refiere a un conjuto de bases de datos que se diferencian en gran parte de las bases de datos convencionales, en caracter\'isticas tanto de uso como de implementaci\'on; estos tipos de bases de datos no usa SQL o al menos no como lenguaje predeterminado para realizar las consultas. Las bases de datos NoSQL (desde ahora "no relacionales"), no soportan totalmente {\bf ACID} \footnote{'ACID: Atomicidad, Coherencia, Aislamiento y Durabilidad'}, en primera instancia es una desventaja, pero gracias a esto permite que los motores de base de datos no relacional escalen f\'acilmente de manera horizontal. 
 
-El lenguaje SQL no es un lenguaje predominante entre los distintos tipos de base de datos no relacionales, por lo general cada motor tiene su propio lenguaje de consultas.
+El lenguaje SQL no es un lenguaje predominante entre los distintos tipos de bases de datos no relacionales, por lo general cada motor tiene su propio lenguaje de consultas. Cabe destacar que la informaci\'on no se almacena con una estructura fija, aun que si existe una estructura que el DBA\footnote{'Database Administrator - Administrador de base de datos'} o el desarrollador propone con anterioridad.
 
-\section{Modelos de base de datos}
+\section{Tipos de base de datos no relacionales}
 
-En el mundo de las base de datos relacionales nos encontramos con distintos modelos o tipos, que se desenpe\~nan mejor en algunos ambientes espec\'ificos; esas distintas facetas no se ven en las base de datos relacionales, por lo cual se listar\'a los modelos de base de datos no relacionales existentes.
+En el mundo de las bases de datos relacionales nos encontramos con distintos modelos o tipos, que se desempe\~nan mejor en algunos ambientes espec\'ificos; esas distintas facetas no se ven en las base de datos relacionales, por lo cual se listar\'a los modelos de base de datos no relacionales existentes.
 
 \subsection{Base de datos orientadas a documentos}
 
@@ -46,6 +46,8 @@ mongodb => {
 \end{lstlisting}
 
 La clave en este caso es 'mongodb' y su contenido es el mismo documento de la secci\'on anterior. Esto hace que var\'ie la forma de recuperar la informaci\'on con respecto a las base de datos basadas en documentos.
+
+Algun muy interesante de este tipo de base de datos es que permite ser utilizado junto base de datos orientadas a documentos,  
 
 \section{Motores de base de datos}
 
