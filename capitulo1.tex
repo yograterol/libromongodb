@@ -3,51 +3,81 @@
 
 \section{Definici\'on}
 
-NoSQL o "No solamente SQL" ({\bf Not Only SQL}) es un t\'ermino acu\~nado por Carlo Strozzi en 1998 y nuevamente retomado por Eric Evans en 2009 y se refiere a un conjuto de bases de datos que se diferencian en gran parte de las bases de datos convencionales, en caracter\'isticas tanto de uso como de implementaci\'on; estos tipos de bases de datos no usa SQL o al menos no como lenguaje predeterminado para realizar las consultas. Las bases de datos NoSQL (desde ahora "no relacionales"), no soportan totalmente {\bf ACID} \footnote{'ACID: Atomicidad, Coherencia, Aislamiento y Durabilidad'}, en primera instancia es una desventaja, pero gracias a esto permite que los motores de base de datos no relacional escalen f\'acilmente de manera horizontal. 
+NoSQL o "No solamente SQL" ({\bf Not Only SQL}) es un t\'ermino acu\~nado por Carlo Strozzi en 1998 y nuevamente retomado por Eric Evans en 2009 y se refiere a un conjuto de bases de datos que se diferencian en gran parte de las bases de datos convencionales, en caracter\'isticas tanto de uso como de implementaci\'on; estos tipos de bases de datos no usan SQL o al menos no como lenguaje predeterminado para realizar las consultas. Las bases de datos NoSQL (desde ahora "no relacionales"), no soportan totalmente {\bf ACID} \footnote{'ACID: Atomicidad, Coherencia, Aislamiento y Durabilidad'}, en primera instancia es una desventaja, pero gracias a esto permite que los motores de bases de datos no relacionales escalen f\'acilmente de manera horizontal. 
 
-El lenguaje SQL no es un lenguaje predominante entre los distintos tipos de bases de datos no relacionales, por lo general cada motor tiene su propio lenguaje de consultas. Cabe destacar que la informaci\'on no se almacena con una estructura fija, aun que si existe una estructura que el DBA\footnote{'Database Administrator - Administrador de base de datos'} o el desarrollador propone con anterioridad.
+El lenguaje SQL no es un lenguaje predominante entre los distintos tipos de bases de datos no relacionales, por lo general cada motor tiene su propio lenguaje de consultas. Cabe destacar que la informaci\'on no se almacena con un esquema fijo (\textbf{pero si usando almacenamiento estructurado}), aun que si existe un esquema que el DBA\footnote{'Database Administrator - Administrador de base de datos'} o el desarrollador propone con anterioridad de manera virtual, es decir, no se crea en el motor antes de utilizar la base de datos sino al almacenar el primer valor.
 
 \section{Tipos de base de datos no relacionales}
 
-En el mundo de las bases de datos relacionales nos encontramos con distintos modelos o tipos, que se desempe\~nan mejor en algunos ambientes espec\'ificos; esas distintas facetas no se ven en las base de datos relacionales, por lo cual se listar\'a los modelos de base de datos no relacionales existentes.
+En el mundo de las bases de datos no relacionales nos encontramos con distintos modelos o tipos, que se desempe\~nan mejor en algunos ambientes espec\'ificos; esas distintas facetas no se ven en las base de datos relacionales. En este libro se expondr\'an los tipos m\'as comunes.
 
 \subsection{Base de datos orientadas a documentos}
 
-Las base de datos orientadas a documentos o tambi\'en denominadas como {\bf Base de datos documental}, trabajan bajo el marco de la definic\'on de un "Documento", donde cada motor de base de datos que usa esta definici\'on difiere en los detalles, pero la mayor\'ia concuerda en como se almacena la informaci\'on con alg\'un formato est\'andar. Los formatos m\'as utilizados por los motores m\'as populares son: {\bf XML, YAML, JSON y BSON}. Se podr\'ia considerar la m\'as utilizada en la actualidad.
+Las bases de datos orientadas a documentos o tambi\'en denominadas como {\bf Bases de datos documental}, trabajan bajo el marco de la definici\'on de un \textit{"Documento"}, donde cada motor que usa esta definici\'on difiere en los detalles, pero la mayor\'ia concuerda en como se almacena la informaci\'on con alg\'un formato est\'andar. Los formatos m\'as utilizados por los motores m\'as populares son: {\bf JSON y BSON}. Se podr\'ia  considerar este tipo como el m\'as utilizada en la actualidad.
 
-Cada documento, es muy similar a un registro en una base de datos relacional, donde se puede observar una estructura parecida mas no r\'igida. Dos documentos no tienen porque tener una estructura igual, aunque sean de una misma colecci\'on de datos.
+Cada documento, es muy similar a un registro en una base de datos relacional, donde se puede observar un esquema parecido mas no r\'igido. Dos documentos no tienen porque tener un esquema igual, aunque sean de una misma colecci\'on de datos.
 
-Ejemplo de un documento:
+\begin{figure}[!ht]
+    \centering
+    \begin{lstlisting}
+    {
+	    _id: 1,
+	    nombre: "MongoDB",
+	    url: "http://www.mongodb.org",
+	    tipo: "Documental"
+    }
+    \end{lstlisting}
+    \caption[Bases de datos documental]{Ejemplo de documento.}
+\end{figure}
 
-\begin{lstlisting}
-{
-	_id: 1,
-	nombre: "MongoDB",
-	url: "http://www.mongodb.org",
-	tipo: "Documental"
-}
-\end{lstlisting}
-
-Este ejemplo demuestra la sencillez de un documento, se observa un modelo al estilo \textit{\textbf{clave : valor}}. Una analog\'ia con las base de datos relacionales ser\'ia: Clave = Campo y Valor = Dato del campo, hasta all\'i queda la analog\'ia.
+Este ejemplo demuestra la sencillez de un documento, se observa un modelo al estilo \textit{\textbf{clave : valor}}. Una analog\'ia con las bases de datos relacionales ser\'ia: Clave = Campo y Valor = Dato del campo, hasta all\'i queda la analog\'ia.
 
 \subsection{Base de datos orientadas a clave/valor}
 
-Este tipo de base de datos es muy similar a las base de datos documentales en el concepto de guardar la informaci\'on con el modelo clave:valor, la diferencia radica en que un documento se almacena en una clave; esta definici\'on puede parecer algo abstracta. Esto se explica mejor con un ejemplo.
+Este tipo de bases de datos es muy similar a las bases de datos documental en el concepto de guardar la informaci\'on con el modelo clave:valor, la diferencia radica en que un documento se almacena en una clave; esta definici\'on puede parecer algo abstracta. Esto se explica mejor con un ejemplo.
 
 El siguiente ejemplo utiliza el documento de la secci\'on anterior:
 
-\begin{lstlisting}
-mongodb => {
-	_id: 1,
-	nombre: "MongoDB",
-	url: "http://www.mongodb.org",
-	tipo: "Documental"
-}
-\end{lstlisting}
+\begin{figure}[!ht]
+    \centering
+    \begin{lstlisting}
+    mongodb => {
+	    _id: 1,
+	    nombre: "MongoDB",
+	    url: "http://www.mongodb.org",
+	    tipo: "Documental"
+    }
+    \end{lstlisting}
+    \caption[Bases de datos clave/valor]{Ejemplo de un documento en una clave.}
+\end{figure}
 
-La clave en este caso es 'mongodb' y su contenido es el mismo documento de la secci\'on anterior. Esto hace que var\'ie la forma de recuperar la informaci\'on con respecto a las base de datos basadas en documentos.
+La clave en este caso es 'mongodb' y su contenido es el mismo documento de la secci\'on anterior. Esto hace que var\'ie la forma de recuperar la informaci\'on con respecto a las bases de datos basadas en documentos.
 
-Algun muy interesante de este tipo de base de datos es que permite ser utilizado junto base de datos orientadas a documentos,  
+Algun muy interesante de este tipo es que permite ser utilizado junto bases de datos orientadas a documentos, lo que origina motores h\'ibridos.
+
+\subsection{Bases de datos orientadas a grafos}
+
+Este tipo difiere completamente a los tipos antes mencionados, y trata la informaci\'on de una manera peculiar usando \textbf{grafos}\footnote{Grafo: es un conjunto de objetos llamados nodos unidos por enlaces denotados aristas, que permiten representar relaciones binarias entre elementos de un conjunto.} y \textbf{teor\'ia de grafos}. Cada nodo solo debe contener una sola columna, por lo tanto se debe normalizar completamente las bases de datos. Y como la definici\'on de grafos indica, las relaciones solo pueden ser binarias, es decir, un nodo puede solo usar una relaci\'on para entrar en contacto con otro nodo y no m\'as de uno.
+
+Las ventajas de este tipo de bases de datos van enfocadas a la integridad de los datos, cualquier cambio en un nodo o relaci\'on solo afecta localmente.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+         [scale=.8,auto=left,every node/.style={circle,fill=blue!20}]
+         \node (nPedro) at (1,10) {Pedro};
+         \node (nJuan) at (4,8)  {Juan};
+         \node (nLuis) at (8,9)  {Luis};
+         \node (nMaria) at (11,8) {Maria};
+         \node (nJulia) at (9,6)  {Julia};
+         \node (nYohan) at (5,5)  {Yohan};
+
+         \foreach \from/\to in {nPedro/nJuan,nJuan/nLuis,nLuis/nMaria,nMaria/nJulia,nJulia/nLuis,nJulia/nYohan,nYohan/nJuan}
+             \draw (\from) -- (\to);
+
+     \end{tikzpicture}
+     \caption[Bases de datos en grafo]{Ejemplo de un gr\'afo con relaciones de conocidos.}
+\end{figure}
 
 \section{Motores de base de datos}
 
