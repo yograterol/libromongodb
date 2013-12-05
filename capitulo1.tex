@@ -69,13 +69,9 @@ Algun muy interesante de este tipo es que permite ser utilizado junto bases de d
 
 \subsection{Bases de datos orientadas a grafos}
 
-Este tipo difiere completamente a los tipos antes mencionados, y trata la informaci\'on de una manera peculiar usando \textbf{grafos}\footnote{Grafo: es un conjunto de objetos llamados nodos unidos por enlaces denotados aristas, que permiten representar relaciones binarias entre elementos de un conjunto.} y \textbf{teor\'ia de grafos}. Cada nodo solo debe contener una sola columna, por lo tanto se debe normalizar completamente las bases de datos. Y como la definici\'on de grafos indica, las relaciones solo pueden ser binarias, es decir, un nodo puede solo usar una relaci\'on para entrar en contacto con otro nodo y no m\'as de uno.
-
-Las ventajas de este tipo de bases de datos van enfocadas a la integridad de los datos, cualquier cambio en un nodo o relaci\'on solo afecta localmente.
-
-\begin{figure}
+\begin{figure}[!h]
     \centering
-    \begin{tikzpicture}[!ht]
+    \begin{tikzpicture}
          [scale=.8,auto=left,every node/.style={circle,fill=blue!20}]
          \node (nPedro) at (1,10) {Pedro};
          \node (nJuan) at (4,8)  {Juan};
@@ -90,6 +86,10 @@ Las ventajas de este tipo de bases de datos van enfocadas a la integridad de los
      \end{tikzpicture}
      \caption[Bases de datos en grafo]{Ejemplo de un gr\'afo con relaciones de conocidos.}
 \end{figure}
+
+Este tipo difiere completamente a los tipos antes mencionados, y trata la informaci\'on de una manera peculiar usando \textbf{grafos}\footnote{Grafo: es un conjunto de objetos llamados nodos unidos por enlaces denotados aristas, que permiten representar relaciones binarias entre elementos de un conjunto.} y \textbf{teor\'ia de grafos}. Cada nodo solo debe contener una sola columna, por lo tanto se debe normalizar completamente las bases de datos. Y como la definici\'on de grafos indica, las relaciones solo pueden ser binarias, es decir, un nodo puede solo usar una relaci\'on para entrar en contacto con otro nodo y no m\'as de uno.
+
+Las ventajas de este tipo de bases de datos van enfocadas a la integridad de los datos, cualquier cambio en un nodo o relaci\'on solo afecta localmente.
 
 \section{Sistema de gesti\'on de bases de datos (SGBD)}
 
