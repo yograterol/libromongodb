@@ -1,0 +1,61 @@
+\part{Primeros pasos con MongoDB} 
+\chapter{Conociendo MongoDB}
+
+\section{MongoDB}
+
+MongoDB\footnote{MongoDB - http://www.mongodb.org/} es un sistema de bases de datos no relacionales, multiplataforma e inspirada en el tipo de bases de datos documental y clave/valor, su nombre proviene del t\'ermino en ingl\'es "hu\textbf{mongo}us". Est\'a liberada bajo licencia de software libre, espec\'ificamente GNU AGPL 3.0\footnote{AGPL - http://www.gnu.org/licenses/agpl-3.0.html}. MongoDB usa el formato BSON (JSON Compilado) para guardar la informaci\'on, dando la libertad de manejar un esquema libre. Este motor de bases de datos es uno de los m\'as conocidos y usados, pudiendolo comparar en popularidad con MySQL en el caso de las bases de datos relacionales.
+
+El desarrollo de MongoDB comenz\'o en el a\~no 2007 por la empresa 10gen\footnote{10gen - http://www.mongodb.com/}, publicando una version final en el 2009. Para la fecha que es escrito este libro, MongoDB se encuentra en la versi\'on 2.4.8.
+
+\section{T\'erminos b\'asicos entorno a MongoDB}
+
+\subsection{JSON - JavaScript Object Notation}
+
+JSON es formato compacto de representacion de objetos. Las especificaciones las public\'o Douglas Crockford en el documento RFC 4627\footnote{RFC 4627 - http://www.ietf.org/rfc/rfc4627.txt}. JSON es un formato independiente del lenguaje, aunque su uso extendido hasta hace poco era en el lenguaje Javascipt. Actualmente se usa JSON en gran cantidades de sistemas para intercambiar informaci\'ion por su simplicidad en comparaci\'on con XML.
+
+Este formato soporta gran cantidad de tipos de datos, lo que lo hace atractivo para un uso generalizado, y cada vez m\'as lenguajes de programaci\'on dan soporte a este formato. El ejemplo del cap\'itulo anterior, donde se mostraba un "documento", no es m\'as que JSON.
+
+\subsection{Documento}
+
+Un documento es un conjuto de datos estructurados (mas no con un esquema estricto), que contiene pares clave/valor. Un documento puede ser comparado con una fila o registro en una base de datos relacional.
+
+\subsection{Colecci\'on}
+
+Es un conjunto de documentos, similar a una tabla en las bases de datos relacionales.
+
+\section{Instalando MongoDB}
+
+\subsection{Instalaci\'on en Linux desde la fuente}
+
+Existen distintas formas de instalar MongoDB en Linux, una de ellas, y la menos recomendable es compilar el c\'odigo fuente que pueden descargar desde: http://www.mongodb.org/downloads. Tambi\'en se puede descargar los binarios, descomprimirlos y usarlos.
+
+\subsection{Instalaci\'on en Linux desde los repositorios}
+
+Los sistemas Linux a diferencia de otros SO, manejo sus software en repositorios, que no es m\'as que un sitio centralizado donde se almacenan todos los software disponible para una distribuci\'on de Linux.
+
+\subsection*{Instalaci\'on en Fedora Linux, Red Hat Linux Enterprise y Derivados}
+
+Para instalar MongoDB en alguna de estras distribuciones, se debe hacer uso del gestor de paquetes yum y ejecutar el siguiente comando:
+
+\begin{lstlisting}
+    yum install mongodb mongodb-server
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textit{\textbf{mongodb}}: Contiene todos los paquetes ``cliente'', como es el caso del cliente \textbf{mongo}, la herramienta para respaldos en binarios de bases de datos \textbf{mongodump}, \textbf{mongorestore} para recuperar respaldos en binario, \textbf{mongoexport} y \textbf{mongoimport} que realizan una acc\'ion similar a mongodump y mongorestore, pero usan formato JSON o CSV.
+    \item \textit{\textbf{mongodb-server}}: Contiene todos los paquetes para hacer funcionar el servidor, como el demonio \textbf{mongod}.
+\end{itemize}
+
+mongodb y mongodb-server se pueden instalar independientemente. ?`Cu\'ando hacer eso? Un caso muy representativo es cuando se desea colocar en producci\'on la base de datos. Se recomienda solo instalar los paquetes de servicio mongodb-server y el cliente en otra m\'aquina.
+
+Para iniciar/reiniciar o apagar el demonio de MongoDB en \textbf{Fedora} se utiliza el siguiente comando:
+
+\begin{lstlisting}
+    systemctl start|restart|stop mongod.service
+\end{lstlisting}
+
+En el caso de \textbf{Red Hat Enterprise Linux 6} o derivados:
+
+\begin{lstlisting}
+    service mongod start|restart|stop
+\end{lstlisting}
