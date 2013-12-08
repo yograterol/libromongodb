@@ -15,9 +15,21 @@ Es imposible para un sistema distribuido garantizar simultáneamente las siguien
 	\end{itemize}
 \end{quote}
 
-En primera instancia es una desventaja, pero gracias a esto permite que los motores de bases de datos no relacionales escalen f\'acilmente de manera horizontal. 
+En primera instancia es una desventaja, pero gracias a esto permite que los motores de bases de datos no relacionales escalen f\'acilmente de manera horizontal. Para subsanar el problema de ACID, nuevamente el profesor Brewer ide\'o BASE (Basically Available, Soft-state, Eventually consistent) que lo conforman los siguientes puntos:
+
+\begin{itemize}
+    \item \textbf{Disponibilidad b\'asica:} para cada solicitud se garantiza una respuesta, satisfactoria o falla de ejecuci\'on.
+    \item \textbf{Estado "Soft":} El estado del sistema puede cambiar con el tiempo, a veces sin
+cualquier entrada.
+    \item \textbf{Consistencia Eventual:} La base de datos puede ser en un momento inconsistente pero
+ser\'a consistente con el tiempo.
+\end{itemize}
 
 El lenguaje SQL no es un lenguaje predominante entre los distintos tipos de bases de datos no relacionales, por lo general cada motor tiene su propio lenguaje de consultas. Cabe destacar que la informaci\'on no se almacena con un esquema fijo (\textbf{pero si usando almacenamiento estructurado}), aun que si existe un esquema que el DBA\footnote{'Database Administrator - Administrador de base de datos'} o el desarrollador propone con anterioridad de manera virtual, es decir, no se crea en el motor antes de utilizar la base de datos sino al almacenar el primer valor.
+
+\section{?`Qu\'e no es NoSQL?}
+
+NoSQL no es una base de datos y tampoco un tipo de base de datos, sino una definici\'on que engloban un conjunto de tipos de bases de datos que difiere con las bases de datos convencionales. 
 
 \section{Tipos de bases de datos no relacionales}
 
@@ -106,30 +118,66 @@ Un tipo de base de datos no sirve de nada sino tiene un sistema que lo gestione,
 \subsection*{Bases de datos documental}
 
 \begin{itemize}
-\item MongoDB (Lanzamiento: 2009 / Licencia: GNU AGPL v3.0)
-\item CouchDB (Lanzamiento: 2005 / Licencia: Apache License 2.0)
-\item Raven DB (Lanzamiento: 2010 / Licencia: GNU AGPL v3.0)
+\item MongoDB
+    \begin{itemize}
+        \item Lanzamiento: 2008
+        \item Licencia: GNU AGPL v3.0
+    \end{itemize}
+\item CouchDB
+    \begin{itemize}
+        \item Lanzamiento: 2005
+        \item Licencia: Apache License 2.0
+    \end{itemize}
+\item Raven DB
+    \begin{itemize}
+        \item Lanzamiento: 2010
+        \item Licencia: GNU AGPL v3.0
+    \end{itemize}
 \end{itemize}
 
 \subsection*{Bases de datos clave/valor}
 
 \begin{itemize}
-\item Apache Cassandra (Lanzamiento: 2008 / Licencia: Apache License 2.0)
-\item Riak (Lanzamiento: 2009 / Licencia: Apache License 2.0)
-\item Redis (Lanzamiento: 2009 / Licencia: BSD)
+\item Apache Cassandra
+    \begin{itemize}
+        \item Lanzamiento: 2008
+        \item Licencia: Apache License 2.0
+    \end{itemize}
+\item Riak
+    \begin{itemize}
+        \item Lanzamiento: 2009
+        \item Licencia: Apache License 2.0
+    \end{itemize}
+\item Redis
+    \begin{itemize}
+        \item Lanzamiento: 2009
+        \item Licencia: BSD
+    \end{itemize}
 \end{itemize}
 
 \subsection*{Bases de datos en grafos}
 
 \begin{itemize}
-\item Neo4j (Lanzamiento: 2009 / Licencia: GNU AGPL v3.0)
-\item Dex (Lanzamiento: 2008 / Licencia: Comercial)
-\item Sones GraphDB (Lanzamiento: 2012 / Licencia: GNU AGPL v3.0 y comercial)
+\item Neo4j
+    \begin{itemize}
+        \item Lanzamiento: 2009
+        \item Licencia: GNU AGPL v3.0
+    \end{itemize}
+\item Dex
+    \begin{itemize}
+        \item Lanzamiento: 2008
+        \item Licencia: Comercial
+    \end{itemize}
+\item Sones GraphDB
+    \begin{itemize}
+        \item Lanzamiento: 2012
+        \item Licencia: GNU AGPL v3.0 y comercial
+    \end{itemize}
 \end{itemize}
 
-\section{¿Por qu\'e NoSQL?}
+
+\section{?`Por qu\'e NoSQL?}
 
 En esta \'epoca donde se generan cantidades enormes de datos menos estructurados, las bases de datos relacionales empiezan a mostrar deficiencias, en almacenamiento u operaciones; siendo esta una de las principales razones de impulsar el uso de bases de datos no relacionales. Muchas personas se quejan del movimiento NoSQL, m\'as que todo por una resistencia al cambio que por los "contras" de este tipo de bases de datos; en la actualidad gestionar una cantidad de datos gigantesca no es tan sencillo si piensas en estructuras, esto da pie al "BigData". Otra de las razones relevantes es la arquitectura, que permite escalar horizontalmente de manera sencilla sin tantos problemas de rendimiento. \textbf{En cap\'itulos posteriores veremos que es escalamiento horizontal}.
 
-\section{Casos de Usos}
-
+La velocidad de desarrollo y la velocidad de la base de datos son puntos a favor para las bases de datos no relacionales, reduciendo el tiempo de desarrollo evitando complejas sentencias SQL y adem\'as aumentando la velocidad de respuestas para los clientes.
