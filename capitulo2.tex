@@ -59,3 +59,101 @@ En el caso de \textbf{Red Hat Enterprise Linux 6} o derivados:
 \begin{lstlisting}
     service mongod start|restart|stop
 \end{lstlisting}
+
+Para activar el inicio de MongoDB en el arranque del sistema debe ejecutar segun sea el caso lo siguiente:
+
+\textbf{Fedora}
+
+\begin{lstlisting}
+    systemctl enable mongod.service
+\end{lstlisting}
+
+\textbf{Red Hat Enterprise Linux 6} o derivados:
+
+\begin{lstlisting}
+    chkconfig mongod on
+\end{lstlisting}
+
+\subsection*{Instalaci\'on en Debian}
+
+En el caso de Debian, en un solo paquete se encuentra la distribuci\'on completa de MongoDB y para instalarlo se utiliza el gestor de paquetes apt-get:
+
+\begin{lstlisting}
+    apt-get install mongodb
+\end{lstlisting}
+
+\subsection*{Instalaci\'on en ArchLinux}
+
+Haciendo uso del gestor de paquetes pacman:
+
+\begin{lstlisting}
+    pacman -S mongodb
+\end{lstlisting}
+
+\subsection{Instalaci\'on en Mac OS X}
+
+\subsection*{Instalaci\'on Manual}
+
+Puede descargar la \'ultima versi\'on disponible de MongoDB para Mac OS X usando cURL\footnote{cURL es una herramienta para usar en un intérprete de comandos para transferir archivos con sintaxis URL}, descomprimirlo y colocarlo en una carpeta a conveniencia.
+
+\begin{lstlisting}
+    curl -O http://downloads.mongodb.org/osx/mongodb-osx-x86_64-XXX.tgz
+\end{lstlisting}
+
+Siendo XXX, la versi\'on disponible. Ahora se descomprime el archivo usando la herramienta tar.
+
+\begin{lstlisting}
+    tar -zxvf mongodb-osx-x86_64-XXX.tgz
+\end{lstlisting}
+
+Con todos los archivos de MongoDB en su Mac OS X, solo debe ingresar a la carpeta resultante y ejecutar el demonio \textbf{mongod}.
+
+\subsection*{Usando Homebrew}
+
+\begin{lstlisting}
+    brew update
+    brew install mongodb
+\end{lstlisting}
+
+\section{La consola interactiva de MongoDB}
+
+Ya con la previa instalaci\'on de MongoDB y sus herramientas, podemos acceder a su consola interactiva y realizar nuestras primeras interacciones con MongoDB.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=1]{mongodb_consola} 
+    \caption[Consola de MongoDB]{Consola de MongoDB.}
+\end{figure}
+
+Al iniciar la consola se conecta autom\'aticamente a la base de datos \textit{\textbf{"test"}}, y apartir de all\'i podemos realizar consultas sobre esa base de datos. La consola es importante para administrar MongoDB, puede parecer desafiante para los que no est\'an acostumbrado a usar herramientas en c\'onsola, pero la gente de 10gen pens\'o en eso y agreg\'o comandos f\'aciles de recordar.
+
+\section{Conectando a bases de datos}
+
+La conexi\'on a bases de datos desde la consola o a trav\'es de alg\'un lenguaje es muy sencillo; a\'un as\'i en MongoDB NO se crean las bases de datos antes de usarla. En bases de datos relacionales, se debe crear toda una estructura inicial para poder almacenar informaci\'on, al menos se debe tener una base de datos con una tabla, eso en MongoDB no se hace. Para crear una base de datos se debe seleccionar, luego almacenar un documento creando una colecci\'on de documentos.
+
+\subsection{Seleccionando la base de datos}
+
+Antes de seleccionar una base de datos, uno tiene la opci\'on de ver el listado de bases de datos que existen en el sistema, con el comando \textit{\textbf{show dbs}}.
+
+\begin{lstlisting}
+    > show dbs
+    admin	0.203125GB
+    fudcon	0.453125GB
+    irianas_server	0.203125GB
+    irianas_web	0.203125GB
+    local	0.078125GB
+    mongoengine	0.203125GB
+    mongoenginetest	0.203125GB
+    mongoenginetest2	0.203125GB
+    mongoenginetest4	0.203125GB
+    test_files	0.203125GB
+\end{lstlisting}
+
+La salida nos muestra el nombre y el tama\~no de la base de datos, es importante mencionar que MongoDB al crear el primer documento reserva espacio en disco.
+
+Luego de saber la lista de bases de datos existente, debo seleccionar una, no es obligatorio que est\'e en la lista, sencillamente haciendo uso del comando \textit{\textbf{use basededatos}}, se selecciona y podemos trabajar con la base de datos existente u operar para crear una nueva.
+
+\begin{lstlisting}
+    > use libromongodb
+    switched to db libromongodb
+\end{lstlisting}
