@@ -17,7 +17,7 @@ Este formato soporta gran cantidad de tipos de datos, lo que lo hace atractivo p
 
 \subsection{Documento}
 
-Un documento es un conjuto de datos estructurados (mas no con un esquema estricto), que contiene pares clave/valor. Un documento puede ser comparado con una fila o registro en una base de datos relacional.
+Un documento es un conjuto de datos estructurados (mas no con un esquema estricto), que contiene pares clave/valor, y se usa BSON (JSON Binario) como formato para almacenar los documentos. Un documento puede ser comparado con una fila o registro en una base de datos relacional.
 
 \subsection{Colecci\'on}
 
@@ -127,7 +127,37 @@ Ya con la previa instalaci\'on de MongoDB y sus herramientas, podemos acceder a 
 
 Al iniciar la consola se conecta autom\'aticamente a la base de datos \textit{\textbf{"test"}}, y apartir de all\'i podemos realizar consultas sobre esa base de datos. La consola es importante para administrar MongoDB, puede parecer desafiante para los que no est\'an acostumbrado a usar herramientas en c\'onsola, pero la gente de 10gen pens\'o en eso y agreg\'o comandos f\'aciles de recordar.
 
-\section{Conectando a bases de datos}
+\subsection{Ayuda en la consola interactiva}
+
+Para acceder a la ayuda de MongoDB en la consola, se utiliza el comando \textit{\textbf{help()}}.
+
+\begin{lstlisting}
+    > help
+	db.help()                    help on db methods
+	db.mycoll.help()             help on collection methods
+	sh.help()                    sharding helpers
+	rs.help()                    replica set helpers
+	help admin                   administrative help
+	help connect                 connecting to a db help
+	help keys                    key shortcuts
+	help misc                    misc things to know
+	help mr                      mapreduce
+
+	show dbs                     show database names
+	show collections             show collections in current database
+	show users                   show users in current database
+	show profile                 show most recent system.profile entries with time >= 1ms
+	show logs                    show the accessible logger names
+	show log [name]              prints out the last segment of log in memory, 'global' is default
+	use <db_name>                set current database
+	db.foo.find()                list objects in collection foo
+	db.foo.find( { a : 1 } )     list objects in foo where a == 1
+	it                           result of the last line evaluated; use to further iterate
+	DBQuery.shellBatchSize = x   set default number of items to display on shell
+	exit                         quit the mongo shell
+\end{lstlisting}
+
+\section{Conectando a una base de datos}
 
 La conexi\'on a bases de datos desde la consola o a trav\'es de alg\'un lenguaje es muy sencillo; a\'un as\'i en MongoDB NO se crean las bases de datos antes de usarla. En bases de datos relacionales, se debe crear toda una estructura inicial para poder almacenar informaci\'on, al menos se debe tener una base de datos con una tabla, eso en MongoDB no se hace. Para crear una base de datos se debe seleccionar, luego almacenar un documento creando una colecci\'on de documentos.
 
@@ -157,3 +187,51 @@ Luego de saber la lista de bases de datos existente, debo seleccionar una, no es
     > use libromongodb
     switched to db libromongodb
 \end{lstlisting}
+
+Para confirmar la selecci\'on de la base de datos "libromongodb" en la sesi\'on, se verifica el valor del objecto \textit{\textbf{"db"}}.
+
+\begin{lstlisting}
+    > db
+    libromongodb
+\end{lstlisting}
+
+\section{Nuestro primer documento}
+
+Lleg\'o la hora de crear una base de datos y una colecci\'on, y eso se har\'a almacenando un documento usando el objeto \textit{\textbf{db}}, previa ejecuci\'on del comando \textit{\textbf{use}}. \textbf{Un documento puede tener en teor\'ia un m\'aximo de hasta 16MB de informaci\'on}. 
+
+Aprovechando el ejemplo del primer cap\'itulo, para por fin almacenarlo en MongoDB y consultarlo. Una de las cosas que hay que tener en cuenta usando la consola interactiva, es usar variables para crear o modificar documentos, de esta manera podemos evitar accidentes con una mala manipulaci\'on directa de la base de datos.
+
+Para almacenar un documento debemos ejecutar el m\'etodo \textit{\textbf{.insert()}} del objeto db, especificando el nombre de la colecci\'on (la colecci\'on se crea de manera din\'amica como la base de datos). Ejemplo:
+
+\begin{lstlisting}
+    > documento = {
+    ...     _id: 1,
+    ...     nombre: "MongoDB",
+    ...     url: "http://www.mongodb.org",
+    ...     tipo: "Documental"
+    ...     }
+    {
+    	"_id" : 1,
+    	"nombre" : "MongoDB",
+    	"url" : "http://www.mongodb.org",
+    	"tipo" : "Documental"
+    }
+    > db.nueva_coleccion.insert(documento)
+\end{lstlisting}
+
+De esta manera tenemos nuestra primera colecci\'on y nuestro primer documento, para confirmar esto, podemos ejecutar tanto el comando \textit{\textbf{show collections}} como el m\'etodo \textit{\textbf{.find()}}.
+
+\begin{lstlisting}
+    > show collections
+    nueva_coleccion
+    system.indexes
+\end{lstlisting}
+
+system.indexes es una colecci\'on que usa MongoDB para almacenar los \'indices de la colecci\'on. Por defecto \textit{\_id} es un \'indice.
+
+\begin{lstlisting}
+    > db.nueva_coleccion.find()
+    { "_id" : 1, "nombre" : "MongoDB", "url" : "http://www.mongodb.org", "tipo" : "Documental" }
+\end{lstlisting}
+
+Con \textit{\textbf{.find()}} se puede comprobar que efectivamente se almacen\'o el documento en la colecci\'on \textit{nueva\_colecci\'on}.
